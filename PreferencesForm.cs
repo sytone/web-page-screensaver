@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using Microsoft.Win32;
-using System.Text;
 using System.Windows.Forms;
+using Microsoft.Win32;
 
-namespace pl.polidea.lab.Web_Page_Screensaver
+namespace WebPageScreensaver
 {
     public partial class PreferencesForm : Form
     {
@@ -19,18 +13,36 @@ namespace pl.polidea.lab.Web_Page_Screensaver
 
         private void PreferencesForm_Load(object sender, EventArgs e)
         {
-            RegistryKey reg = Registry.CurrentUser.CreateSubKey(Program.KEY);
-            textBox1.Text = (string)reg.GetValue("Url", "http://www.polidea.pl");
-            reg.Close();
+            try
+            {
+                RegistryKey reg = Registry.LocalMachine.CreateSubKey(Program.KEY);
+                textBox1.Text = (string)reg.GetValue("DataPath", "\\\\Machine\\path");
+                reg.Close();
+            }
+            catch (Exception)
+            {
+                RegistryKey reg = Registry.LocalMachine.OpenSubKey(Program.KEY);
+                textBox1.Text = (string)reg.GetValue("DataPath", "\\\\Machine\\path");
+                textBox1.ReadOnly = true;
+                reg.Close();
+            }
         }
 
         protected override void OnClosed(EventArgs e)
         {
             if (DialogResult == DialogResult.OK)
             {
-                RegistryKey reg = Registry.CurrentUser.CreateSubKey(Program.KEY);
-                reg.SetValue("Url", textBox1.Text);
-                reg.Close();
+                try
+                {
+                    RegistryKey reg = Registry.LocalMachine.CreateSubKey(Program.KEY);
+                    reg.SetValue("DataPath", textBox1.Text);
+                    reg.Close();
+                }
+                catch (Exception)
+                {
+                    
+                    throw;
+                }
             }
 
             base.OnClosed(e);

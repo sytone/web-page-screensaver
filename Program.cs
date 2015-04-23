@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
-using pl.polidea.lab.Web_Page_Screensaver;
 
-namespace pl.polidea.lab.Web_Page_Screensaver
+namespace WebPageScreensaver
 {
     static class Program
     {

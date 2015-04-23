@@ -1,4 +1,4 @@
-﻿namespace pl.polidea.lab.Web_Page_Screensaver
+﻿namespace WebPageScreensaver
 {
     partial class ScreensaverForm
     {
