@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.webBrowser = new System.Windows.Forms.WebBrowser();
+            this.TimeUntilReload = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // webBrowser
@@ -40,11 +41,20 @@
             this.webBrowser.Size = new System.Drawing.Size(284, 262);
             this.webBrowser.TabIndex = 0;
             // 
+            // TimeUntilReload
+            // 
+            this.TimeUntilReload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.TimeUntilReload.Location = new System.Drawing.Point(184, 0);
+            this.TimeUntilReload.Name = "TimeUntilReload";
+            this.TimeUntilReload.Size = new System.Drawing.Size(100, 10);
+            this.TimeUntilReload.TabIndex = 1;
+            // 
             // ScreensaverForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Controls.Add(this.TimeUntilReload);
             this.Controls.Add(this.webBrowser);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
@@ -60,6 +70,7 @@
         #endregion
 
         private System.Windows.Forms.WebBrowser webBrowser;
+        private System.Windows.Forms.ProgressBar TimeUntilReload;
     }
 }
 
